@@ -7,13 +7,10 @@ class TestGenerator:
 
     @pytest.fixture
     def init_notebook(self):
-        """Підготовка до тестів
-        """
+
         return Notebook("Dell", "XPS 13", 13.3, 16, "Intel i7", 512)
 
     def test_gen_single_types(self):
-        """Перевірка типів атрибутів згенерованого Notebook
-        """
         g = Generator()
         nb = g.generate_single()
         assert isinstance(nb, Notebook)
@@ -26,8 +23,6 @@ class TestGenerator:
         assert isinstance(nb.birthday, date)
 
     def test_gen_1000_type(self):
-        """Перевірка генерування 1000 ноутбуків
-        """
         g = Generator()
         nlist = g.generate_1000()
         assert isinstance(nlist, list)
@@ -35,8 +30,6 @@ class TestGenerator:
         assert len(nlist) == 1000
 
     def test_gen_10_000_type(self):
-        """Перевірка генерування 10 000 ноутбуків
-        """
         g = Generator()
         nlist = g.generate_10_000()
         assert isinstance(nlist, list)
