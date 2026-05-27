@@ -1,28 +1,28 @@
-from Practice1.student_dataclass import Student
-# from student_dataclass import Student
+import datetime
+from Practice1.notebook_dataclass import Notebook
 
 
 if __name__ == "__main__":
     # Демонстраційну частину коду винесено окремо для забезпечення коректних результатів покриття тестів
 
-    st = Student("Тарас", "Тарасов", "АСД", 88)
-    st2 = st
-    print(st)
-    print(st.get_info())
-    print(st.get_message())
-    print(st == st2)
-    st3 = Student("Тарас", "Тарасов", "АСД", 88)
-    print(st3)
-    print(st3.get_info())
-    print(st3.get_message())
-    print(st == st3)
-    st4 = Student("Петро", "Стеценко", "АСД", 67,"залік")
-    print(st4)
-    print(st4.get_info())
-    print(st4.get_message())
+    nb = Notebook("Dell", "XPS 13", 13.3, 16, "Intel i7", 512)
+    nb2 = nb
+    print(nb)
+    print(nb.get_info())
+    print(nb.get_message())
+    print(nb == nb2)
+    nb3 = Notebook("Dell", "XPS 13", 13.3, 16, "Intel i7", 512)
+    print(nb3)
+    print(nb3.get_info())
+    print(nb3.get_message())
+    print(nb == nb3)
+    nb4 = Notebook("ASUS", "ROG Strix", 15.6, 16, "AMD Ryzen 7", 1024, datetime.date(2023, 6, 15))
+    print(nb4)
+    print(nb4.get_info())
+    print(nb4.get_message())
 
     # Варіант з помилкою
-    st5 = Student("Сергій", "Тимошко", "АСД", "45")
-    print(st5)
-    print(st5.get_info())
-    print(st5.get_message())
+    nb5 = Notebook("HP", "Pavilion", 4.0, 4, "Intel Celeron", 128)
+    print(nb5)
+    print(nb5.get_info())
+    print(nb5.get_message())

@@ -1,12 +1,12 @@
 from generator import Generator
-from AlgorithmsCourse.Practice1.student_dataclass import Student
+from Practice1.notebook_dataclass import Notebook
 
 
 if __name__ == "__main__":
 
-    st = Student("Тарас", "Тарасов", "АСД", 88)
-    print(st.get_info())
-    print(st)
+    nb = Notebook("Dell", "XPS 13", 13.3, 16, "Intel i7", 512)
+    print(nb.get_info())
+    print(nb)
 
     g = Generator()
     print(g.generate_single())

@@ -1,19 +1,16 @@
-import names
 import random
 from datetime import date
-from AlgorithmsCourse.Practice1.student_dataclass import Student
-
+from Practice1.notebook_dataclass import Notebook
 
 class Generator:
-    disciplines = ("Алгоритми і структури даних",
-                   "Основи програмування",
-                   "Бази даних",
-                   "Захист інформації",
-                   "Основи машинного навчання",
-                   "Адміністрування Linux")
-    exam = ["іспит", "залік", "діф. залік"]
+    manufacturers = ("Dell", "ASUS", "Acer", "Lenovo", "HP", "Apple")
+    models = ("XPS 13", "ROG Strix", "Aspire 5", "IdeaPad 3", "Pavilion", "MacBook Air")
+    cpus = ("Intel i3", "Intel i5", "Intel i7", "AMD Ryzen 3", "AMD Ryzen 5", "AMD Ryzen 7", "Intel Celeron")
+    screen_sizes = (13.3, 14.0, 15.6, 17.3)
+    memories = (4, 8, 16, 32)
+    storages = (128, 256, 512, 1024)
 
-    def __create_date(self) -> str:
+    def __create_date(self) -> date:
         cur_year = date.today().year
         year = random.randint(1930, cur_year)
         month = random.randint(1, 12)
@@ -24,29 +21,25 @@ class Generator:
             day = random.randint(1, 28)
         else:
             day = random.randint(1, 30)
-        return "{:04d}-{:02d}-{:02d}".format(year, month, day)
+        return date(year, month, day)
 
-    def generate_single(self) -> Student:
-        """Метод автоматичного створення екземпляру класу Student з випадковими чи обраними з певного переліку значеннями кожної властивості класу
-        """
-        name = names.get_first_name()
-        surname = names.get_last_name()
-
-        exam = self.exam[
-            random.randint(0, 2)]
-        disc = random.choice(self.disciplines)
-        mark = random.randint(0,100)
-        return Student(surname, name, disc, mark, exam)
+    def generate_single(self) -> Notebook:
+        manufacturer = random.choice(self.manufacturers)
+        model = random.choice(self.models)
+        screen_size = random.choice(self.screen_sizes)
+        memory = random.choice(self.memories)
+        cpu = random.choice(self.cpus)
+        storage = random.choice(self.storages)
+        birthday = self.__create_date()
+        return Notebook(manufacturer, model, screen_size, memory, cpu, storage, birthday)
 
     def generate_1000(self) -> list:
-        """Метод генерування 1000 об'єктів класу Student"""
         plist = list()
         for i in range(1000):
             plist.append(self.generate_single())
         return plist
 
     def generate_10_000(self) -> list:
-        """Метод генерування 10 000 об'єктів класу Student"""
         plist = [self.generate_single() for i in range(10000)]
         return plist
 
