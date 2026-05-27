@@ -1,5 +1,5 @@
 from dataclasses import dataclass, field
-from AlgorithmsCourse.Practice1.abstract_object import AbstractObject
+from Practice1.abstract_object import AbstractObject
 
 
 @dataclass(order=True)

@@ -1,4 +1,4 @@
-from AlgorithmsCourse.Practice1.student_dataclass import Student
+from Practice1.student_dataclass import Student
 # from student_dataclass import Student
 
 
