@@ -1,5 +1,5 @@
-from AlgorithmsCourse.Practice3.abstractstructure import AbstractStructureBasic, AbstractStructureExtended
-from AlgorithmsCourse.Practice1.abstract_object import AbstractObject
+from Practice3.abstractstructure import AbstractStructureBasic, AbstractStructureExtended
+from Practice1.abstract_object import AbstractObject
 from collections.abc import Iterable
 
 

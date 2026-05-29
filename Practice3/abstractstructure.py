@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 from collections.abc import Iterable
-from AlgorithmsCourse.Practice1.abstract_object import AbstractObject
+from Practice1.abstract_object import AbstractObject
 
 
 class AbstractStructureBasic(ABC):
