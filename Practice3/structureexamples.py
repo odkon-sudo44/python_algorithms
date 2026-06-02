@@ -121,9 +121,6 @@ class ArrayParts(AbstractStructureExtended):
             for element in args:
                 self.append(element)
 
-    # ------------------------------------------------------------------ #
-    #  Внутрішні допоміжні методи                                        #
-    # ------------------------------------------------------------------ #
     def __size_extending(self) -> None:
         """Подвоєння ємності внутрішнього буфера зі збереженням наявних
         елементів. Викликається, коли всі зарезервовані комірки заповнені.
@@ -146,9 +143,6 @@ class ArrayParts(AbstractStructureExtended):
             raise IndexError("Out of index")
         return index
 
-    # ------------------------------------------------------------------ #
-    #  Базовий рівень                                                    #
-    # ------------------------------------------------------------------ #
     def __len__(self) -> int:
         return self.__size
 
@@ -219,9 +213,6 @@ class ArrayParts(AbstractStructureExtended):
         self.__array[self.__size - 1] = None
         self.__size -= 1
 
-    # ------------------------------------------------------------------ #
-    #  Розширений рівень                                                 #
-    # ------------------------------------------------------------------ #
     def __iter__(self) -> Iterable:
         self.__iter_index = 0
         return self

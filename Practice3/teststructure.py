@@ -25,7 +25,8 @@ def five_notebooks():
     ]
 
 
-# ----------------------------- init / len ----------------------------- #
+# init / len
+
 def test_init_empty():
     arr = ArrayParts()
     assert len(arr) == 0
@@ -52,7 +53,8 @@ def test_elements_are_abstract_objects(five_notebooks):
     assert isinstance(arr[0], Notebook)
 
 
-# ----------------------------- repr ----------------------------------- #
+#  repr
+
 def test_repr_empty():
     assert repr(ArrayParts()) == "[]"
 
@@ -64,7 +66,8 @@ def test_repr_contains_elements(five_notebooks):
     assert "Dell" in text
 
 
-# ----------------------------- getitem -------------------------------- #
+#  getitem
+
 def test_getitem_positive(five_notebooks):
     arr = ArrayParts(five_notebooks)
     assert arr[0] == five_notebooks[0]
@@ -98,7 +101,8 @@ def test_getitem_wrong_type(five_notebooks):
         _ = arr["a"]
 
 
-# ----------------------------- setitem -------------------------------- #
+#  setitem
+
 def test_setitem(five_notebooks):
     arr = ArrayParts(five_notebooks)
     new = make_notebook("Apple", "MacBook Air", 13.3, 16, "Apple M2", 512)
@@ -125,7 +129,8 @@ def test_setitem_wrong_type(five_notebooks):
         arr["x"] = make_notebook()
 
 
-# ----------------------------- append / resize ------------------------ #
+#  append / resize
+
 def test_append_grows():
     arr = ArrayParts()
     items = [make_notebook(model=str(i)) for i in range(25)]
@@ -146,7 +151,7 @@ def test_resize_keeps_order():
         assert arr[i] == items[i]
 
 
-# ----------------------------- insert --------------------------------- #
+#  insert
 def test_insert_middle(five_notebooks):
     arr = ArrayParts(five_notebooks)
     new = make_notebook("Apple", "MacBook Air")
@@ -192,7 +197,7 @@ def test_insert_triggers_resize():
     assert len(arr) == 11
 
 
-# ----------------------------- index ---------------------------------- #
+#  index
 def test_index_found(five_notebooks):
     arr = ArrayParts(five_notebooks)
     assert arr.index(five_notebooks[3]) == 3
@@ -215,7 +220,7 @@ def test_index_not_found(five_notebooks):
         arr.index(other)
 
 
-# ----------------------------- remove --------------------------------- #
+#  remove
 def test_remove(five_notebooks):
     arr = ArrayParts(five_notebooks)
     arr.remove(five_notebooks[1])
@@ -238,7 +243,8 @@ def test_remove_not_found(five_notebooks):
         arr.remove(other)
 
 
-# ----------------------------- iter / next ---------------------------- #
+#  iter / next
+
 def test_iteration(five_notebooks):
     arr = ArrayParts(five_notebooks)
     collected = [item for item in arr]
@@ -260,7 +266,8 @@ def test_next_stops():
         next(it)
 
 
-# ----------------------------- delitem -------------------------------- #
+#  delitem
+
 def test_delitem(five_notebooks):
     arr = ArrayParts(five_notebooks)
     del arr[0]
@@ -281,7 +288,8 @@ def test_delitem_out_of_range(five_notebooks):
         del arr[10]
 
 
-# ----------------------------- clear ---------------------------------- #
+#  clear
+
 def test_clear(five_notebooks):
     arr = ArrayParts(five_notebooks)
     arr.clear()
@@ -298,16 +306,18 @@ def test_clear_then_append(five_notebooks):
     assert arr[0] == nb
 
 
-# ----------------------------- copy ----------------------------------- #
+#  copy
+
 def test_copy(five_notebooks):
     arr = ArrayParts(five_notebooks)
     snapshot = arr.copy()
     assert snapshot == five_notebooks
     arr.remove(five_notebooks[0])
-    assert len(snapshot) == 5     # копія не змінюється разом зі структурою
+    assert len(snapshot) == 5
 
 
-# ----------------------------- extend --------------------------------- #
+#  extend
+
 def test_extend(five_notebooks):
     arr = ArrayParts(five_notebooks[:2])
     arr.extend(five_notebooks[2:])
@@ -321,7 +331,7 @@ def test_extend_empty(five_notebooks):
     assert len(arr) == 5
 
 
-# ----------------------------- pop ------------------------------------ #
+#  pop
 def test_pop_default(five_notebooks):
     arr = ArrayParts(five_notebooks)
     value = arr.pop()
@@ -342,7 +352,8 @@ def test_pop_empty():
         arr.pop()
 
 
-# ----------------------------- reverse -------------------------------- #
+#  reverse
+
 def test_reverse(five_notebooks):
     arr = ArrayParts(five_notebooks)
     arr.reverse()
@@ -355,7 +366,8 @@ def test_reverse_empty():
     assert len(arr) == 0
 
 
-# ----------------------------- count ---------------------------------- #
+#  count
+
 def test_count():
     nb = make_notebook("Dell", "XPS 13")
     dup = make_notebook("Dell", "XPS 13")     # рівний за полями
@@ -371,7 +383,8 @@ def test_count_absent(five_notebooks):
     assert arr.count(other) == 0
 
 
-# ----------------------------- integration with generator ------------- #
+#  integration with generator
+
 def test_with_generator():
     g = Generator()
     data = [g.generate_single() for _ in range(5)]
