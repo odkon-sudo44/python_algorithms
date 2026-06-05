@@ -5,20 +5,8 @@ from Practice4.node import Node
 
 
 class LinkedList(AbstractStructureExtended):
-    """Однозв'язний список об'єктів. Кожен елемент зберігається в ланці Node,
-    що містить дані і посилання на наступну ланку. Зберігаються посилання на
-    голову (__head) і хвіст (__tail); хвіст потрібен, щоб додавати в кінець за
-    O(1) без перебору всього списку. list для зберігання не використовується.
-    """
 
     def __init__(self, *args: AbstractObject | Iterable[AbstractObject]):
-        """Створення порожнього списку або наповнення з переданих даних.
-
-        Підтримує:
-            LinkedList(obj1, obj2, ...)    - окремі об'єкти
-            LinkedList([obj1, obj2, ...])  - одна ітерируєма структура
-        :param args: окремі об'єкти або одна Iterable з об'єктами
-        """
         self.__head: None | Node = None
         self.__tail: None | Node = None
         self.__size = 0
@@ -32,10 +20,6 @@ class LinkedList(AbstractStructureExtended):
 
 
     def __node_at(self, index: int) -> Node:
-        """Повертає ланку за індексом з перебором від голови.
-        :param index: цілий індекс (підтримує від'ємні)
-        :return: ланка Node на вказаній позиції
-        """
         if index < 0:
             index += self.__size
         if index < 0 or index >= self.__size:
@@ -124,13 +108,13 @@ class LinkedList(AbstractStructureExtended):
         link = self.__head
         while link is not None:
             if link.data == value:
-                if prev is None:                 # видаляємо голову
+                if prev is None:
                     self.__head = link.next
-                    if self.__head is None:      # список спорожнів
+                    if self.__head is None:
                         self.__tail = None
                 else:
                     prev.next = link.next
-                    if link is self.__tail:      # видалили хвіст
+                    if link is self.__tail:
                         self.__tail = prev
                 self.__size -= 1
                 return
